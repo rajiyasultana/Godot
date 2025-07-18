@@ -35,6 +35,7 @@ shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+use_collision = true
 size = Vector3(39.15, 8, 5.33)
 material = SubResource("StandardMaterial3D_5xgho")
 
