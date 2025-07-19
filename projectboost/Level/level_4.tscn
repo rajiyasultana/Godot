@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://pa3aptij83ep"]
+
+[ext_resource type="Script" uid="uid://17ij5mhe7mms" path="res://Level/finish_pad.gd" id="1_peyg1"]
+[ext_resource type="PackedScene" uid="uid://t128ijy6b8ug" path="res://player.tscn" id="2_ncm42"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_u52ul"]
+sky_material = SubResource("ProceduralSkyMaterial_5xgho")
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+background_mode = 2
+sky = SubResource("Sky_u52ul")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xgho"]
+albedo_color = Color(0.628057, 0.385695, 0.230086, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u52ul"]
+albedo_color = Color(0.215686, 0.396078, 0.454902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vonw3"]
+albedo_color = Color(0.215686, 0.396078, 0.454902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peyg1"]
+albedo_color = Color(0.950852, 0.940481, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_peyg1"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_peyg1"]
+points = PackedVector3Array(-1.5, -1.49971, -1.49971, 1.5, 1.49978, 1.49978, 1.5, -1.49978, 1.49978, 1.5, 1.49978, -1.49978, -1.5, 1.49971, 1.49971, 1.5, -1.49978, -1.49978, -1.5, -1.49971, 1.49971, -1.5, 1.49971, -1.49971)
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vonw3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+use_collision = true
+size = Vector3(39.15, 8, 5.33)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="LunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_u52ul")
+
+[node name="FinishPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_vonw3")
+script = ExtResource("1_peyg1")
+file_path = "uid://ckdv87k1rgubd"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999962, -0.00872653, 0, 0.00872653, 0.999962, 0, 3, 10)
+
+[node name="Player" parent="." instance=ExtResource("2_ncm42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.4, 0)
+
+[node name="MovingHazard" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71453, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingHazard"]
+material_override = SubResource("StandardMaterial3D_peyg1")
+mesh = SubResource("BoxMesh_peyg1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingHazard"]
+shape = SubResource("ConvexPolygonShape3D_peyg1")
