@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://pa3aptij83ep"]
+[gd_scene load_steps=10 format=3 uid="uid://pa3aptij83ep"]
 
 [ext_resource type="Script" uid="uid://17ij5mhe7mms" path="res://Level/finish_pad.gd" id="1_peyg1"]
 [ext_resource type="PackedScene" uid="uid://t128ijy6b8ug" path="res://player.tscn" id="2_ncm42"]
+[ext_resource type="PackedScene" uid="uid://dii8vefjsvmga" path="res://moving_hazard.tscn" id="3_ncm42"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -24,15 +25,6 @@ albedo_color = Color(0.215686, 0.396078, 0.454902, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vonw3"]
 albedo_color = Color(0.215686, 0.396078, 0.454902, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peyg1"]
-albedo_color = Color(0.950852, 0.940481, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_peyg1"]
-size = Vector3(3, 3, 3)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_peyg1"]
-points = PackedVector3Array(-1.5, -1.49971, -1.49971, 1.5, 1.49978, 1.49978, 1.5, -1.49978, 1.49978, 1.5, 1.49978, -1.49978, -1.5, 1.49971, 1.49971, 1.5, -1.49978, -1.49978, -1.5, -1.49971, 1.49971, -1.5, 1.49971, -1.49971)
 
 [node name="Level" type="Node3D"]
 
@@ -69,12 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999962, -0.00872653, 0, 0.00872653, 0.9999
 [node name="Player" parent="." instance=ExtResource("2_ncm42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.4, 0)
 
-[node name="MovingHazard" type="AnimatableBody3D" parent="."]
+[node name="MovingHazard" parent="." instance=ExtResource("3_ncm42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71453, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingHazard"]
-material_override = SubResource("StandardMaterial3D_peyg1")
-mesh = SubResource("BoxMesh_peyg1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingHazard"]
-shape = SubResource("ConvexPolygonShape3D_peyg1")
+destination = Vector3(0, 2, 0)
+duration = 3.0
