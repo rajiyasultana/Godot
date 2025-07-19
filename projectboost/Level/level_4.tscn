@@ -61,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999962, -0.00872653, 0, 0.00872653, 0.9999
 [node name="Player" parent="." instance=ExtResource("2_ncm42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.4, 0)
 
-[node name="MovingHazard" parent="." instance=ExtResource("3_ncm42")]
+[node name="MovingHazard" parent="." groups=["Hazard"] instance=ExtResource("3_ncm42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71453, 0)
 destination = Vector3(0, 2, 0)
 duration = 3.0
