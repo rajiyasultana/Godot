@@ -1,23 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dh0012sl1j1fu"]
+[gd_scene load_steps=7 format=3 uid="uid://dh0012sl1j1fu"]
 
 [ext_resource type="Script" uid="uid://17ij5mhe7mms" path="res://Level/finish_pad.gd" id="1_rjurc"]
 [ext_resource type="PackedScene" uid="uid://t128ijy6b8ug" path="res://player.tscn" id="2_mpmgm"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_u52ul"]
-sky_material = SubResource("ProceduralSkyMaterial_5xgho")
-
-[sub_resource type="Environment" id="Environment_vonw3"]
-background_mode = 2
-sky = SubResource("Sky_u52ul")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xgho"]
-albedo_color = Color(0.628057, 0.385695, 0.230086, 1)
+[ext_resource type="PackedScene" uid="uid://du32l15ail7ap" path="res://bACKGROUND.tscn" id="3_mpmgm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjurc"]
 albedo_color = Color(6.06447e-06, 0.937936, 0.633135, 1)
@@ -29,19 +14,6 @@ albedo_color = Color(0.215686, 0.396078, 0.454902, 1)
 albedo_color = Color(0.215686, 0.396078, 0.454902, 1)
 
 [node name="Level" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vonw3")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Floor" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
-use_collision = true
-size = Vector3(39.15, 8, 5.33)
-material = SubResource("StandardMaterial3D_5xgho")
 
 [node name="Hazard" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354987, 2.62092, -0.973298)
@@ -64,7 +36,10 @@ script = ExtResource("1_rjurc")
 file_path = "uid://uedhbrksjgiv"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999962, -0.00872653, 0, 0.00872653, 0.999962, 0, 3, 10)
+transform = Transform3D(1, 0, 0, 0, 0.999962, -0.00872653, 0, 0.00872653, 0.999962, 0, 5, 10)
 
 [node name="Player" parent="." instance=ExtResource("2_mpmgm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.4, 0)
+
+[node name="Floor" parent="." instance=ExtResource("3_mpmgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.01993, 0)
