@@ -98,3 +98,5 @@ path_joined = false
 
 [node name="Enemy" parent="Path3D" instance=ExtResource("2_5x8ra")]
 transform = Transform3D(-4.37112e-08, 0, -0.999996, 0, 1, 0, 0.999996, 0, -4.37112e-08, -22, 0, 6)
+
+[node name="Base" type="Node3D" parent="."]
