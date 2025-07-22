@@ -94,3 +94,7 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37112e-08, 0, -0.999996, 0, 1, 0, 0.999996, 0, -4.37112e-08, -22, 0, 6)
+loop = false
