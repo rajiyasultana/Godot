@@ -13,3 +13,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 radius = 1.246
 sides = 32
 material = SubResource("StandardMaterial3D_cbgtc")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+billboard = 1
+text = "starting"
+font_size = 500
+outline_size = 100
