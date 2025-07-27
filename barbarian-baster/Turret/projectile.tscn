@@ -7,6 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_sxav3"]
 
 [node name="Peojectile" type="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 top_level = true
 script = ExtResource("1_sxav3")
 
