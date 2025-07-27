@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	ray_cast_3d.force_raycast_update()
 	
 	if ray_cast_3d.is_colliding():
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 		var collider = ray_cast_3d.get_collider()
 		if collider is GridMap: 
 			if Input.is_action_pressed("click"):
@@ -20,3 +21,5 @@ func _process(delta: float) -> void:
 				if grid_map.get_cell_item(cell) == 0:
 					grid_map.set_cell_item(cell, 1)
 			
+	else:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
