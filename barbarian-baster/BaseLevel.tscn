@@ -123,6 +123,7 @@ progress = 20.0
 
 [node name="Base" parent="." instance=ExtResource("3_o2j4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+max_health = 6
 
 [node name="TurretManager" type="Node3D" parent="."]
 script = ExtResource("5_cwwxe")
