@@ -150,6 +150,7 @@ vertical_alignment = 2
 [node name="DifficultyManager" parent="." instance=ExtResource("9_xkmwr")]
 
 [node name="VictoryLayer" parent="." instance=ExtResource("10_now27")]
+visible = false
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]
 [connection signal="stop_spawing_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawing_enemies"]
